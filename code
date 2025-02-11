@@ -1,0 +1,27 @@
+import random
+
+def lancer_de_des(nombre_de_des=1, faces=6):
+    """
+    Simule le lancer de dés.
+
+    :param nombre_de_des: Nombre de dés à lancer (par défaut 1).
+    :param faces: Nombre de faces sur chaque dé (par défaut 6).
+    :return: Liste des résultats des lancers de dés.
+    """
+    if nombre_de_des < 1 or faces < 2:
+        raise ValueError("Le nombre de dés doit être au moins 1 et le nombre de faces au moins 2.")
+    
+    resultats = [random.randint(1, faces) for _ in range(nombre_de_des)]
+    return resultats
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    try:
+        nombre_de_des = int(input("Nombre de dés à lancer : "))
+        faces = int(input("Nombre de faces sur chaque dé : "))
+        
+        resultats = lancer_de_des(nombre_de_des, faces)
+        print(f"Résultats du lancer : {resultats}")
+        print(f"Total : {sum(resultats)}")
+    except ValueError as e:
+        print(f"Erreur : {e}")
